@@ -11,7 +11,7 @@ import android.content.res.AssetManager;
 			return singleton;
 		}
 
-		public static AssetManager getAssetManager()
+		public AssetManager getAssetManager()
 		{
 			return singleton.getAssets();
 		}

@@ -1,12 +1,14 @@
-package com.artal.mobile_repetitor.Activities;
+package com.artal.mobile_repetitor.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 
+import com.artal.mobile_repetitor.R;
 import com.artal.mobile_repetitor.testEntities.SubjectsEnumeration;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,94 +20,115 @@ import android.widget.TextView;
 		protected void onCreate (Bundle bundle)
 		{
 			super.onCreate (bundle);
-//			SetContentView (R.layout.Main);
+			setContentView (R.layout.main_layout);
 
-//			Button mathButton = (Button) findViewById (R.id.MathButton);
+			Button mathButton = (Button) findViewById (R.id.MathButton);
 			
-//			mathButton.setOnClickListener(new OnClickListener() {
-//				@Override
-//				public void onClick(View v) {
-//					startActivity(GetSubjectIntent(SubjectsEnumeration.Math));
-//				}
-//			});
-//
-//			((ImageButton)(FindViewById(R.Id.marketButton))).setOnClickListener(new OnClickListener() {
-//				
-//				@Override
-//				public void onClick(View v) {
-//					MarketButtonClick();
-//					
-//				}
-//			});
-			
-//			((TextView) findViewById(R.Id.marketTextView)).setOnClickListener(new OnClickListener() {
-//				
-//				@Override
-//				public void onClick(View v) {
-//					MarketButtonClick();
-//					
-//				}
-//			});
+			mathButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					startActivity(GetSubjectIntent(SubjectsEnumeration.Math));
+				}
+			});
+
+          	((ImageButton)(findViewById(R.id.marketButton))).setOnClickListener(MarketButtonClick());
+			((TextView) findViewById(R.id.marketTextView)).setOnClickListener(MarketButtonClick());
 			
 
-//			(FindViewById<ImageButton> (Resource.Id.vkButton)).Click += VkButtonClick;
-//			(FindViewById<TextView> (Resource.Id.vkTextView)).Click += VkButtonClick;
-//
-//			(FindViewById<ImageButton> (Resource.Id.shareButton)).Click += ShareButtonClick;
-//			(FindViewById<TextView> (Resource.Id.shareTextView)).Click += ShareButtonClick;
-//
-//			(FindViewById<ImageButton> (Resource.Id.almaButton)).Click += AlmaButtonClick;
-//			(FindViewById<TextView> (Resource.Id.almaTextView)).Click += AlmaButtonClick;
-//
-//			(FindViewById<ImageButton> (Resource.Id.anketaButton)).Click += AnketaButtonClick;
-//			(FindViewById<TextView> (Resource.Id.anketaTextView)).Click += AnketaButtonClick;
+			((ImageButton)findViewById(R.id.vkButton)).setOnClickListener(VkButtonClick());
+			((TextView) findViewById(R.id.vkTextView)).setOnClickListener(VkButtonClick());
+
+			((ImageButton)findViewById(R.id.shareButton)).setOnClickListener(ShareButtonClick());
+			((TextView) findViewById(R.id.shareTextView)).setOnClickListener(ShareButtonClick());
+			
+			((ImageButton)findViewById(R.id.almaButton)).setOnClickListener(AlmaButtonClick());
+			((TextView) findViewById(R.id.almaTextView)).setOnClickListener(AlmaButtonClick());
+
+			((ImageButton)findViewById(R.id.anketaButton)).setOnClickListener(AnketaButtonClick());
+			((TextView) findViewById(R.id.anketaTextView)).setOnClickListener(AnketaButtonClick());
 		}
 
-//		private Intent GetSubjectIntent(SubjectsEnumeration subjectType)
-//		{
-////			Intent intent = new Intent (this, typeof(SubjectActivity));
-////			intent.PutExtra ("SubjectType", subjectType.ToString());
-////			return intent;
-//		}
+		private Intent GetSubjectIntent(SubjectsEnumeration subjectType)
+		{
+		//  Intent intent = new Intent (this, typeof(SubjectActivity));
+		//	intent.PutExtra ("SubjectType", subjectType.toString());
+	   //   return intent;
+			return null;
+		}
 
 		public void onBackPressed ()
 		{
 			finish ();
 		}
 
-//		public bool onPrepareOptionsMenu (Menu menu) {
-//			return false;
-//		}
-
-		private void MarketButtonClick()
-		{
-			goToURL ("https://play.google.com/store/apps/details?id=com.flaxtreme.CT");
-			//GoToURL ("https://play.google.com/store/apps/details?id=com.flaxtreme.pahonia");	
+		public boolean onPrepareOptionsMenu (Menu menu) {
+			return false;
 		}
 
-//		private void VkButtonClick(Object sender, EventArgs args)
-//		{
-//			goToURL ("http://vk.com/topic-50105858_29108685");	
-//		}
-//
-//		private void AlmaButtonClick(Object sender, EventArgs args)
-//		{
-//			goToURL ("http://goo.gl/Ro8frA");	
-//		}
-//
-//		private void AnketaButtonClick(Object sender, EventArgs args)
-//		{
-//			goToURL ("http://goo.gl/qvigG2");
-//		}
-//
-//		private void ShareButtonClick(Object sender, EventArgs args)
-//		{
-//			Intent sharingIntent = new Intent(Intent.ActionSend);
-//			sharingIntent.SetType ("text/plain");
-//			String shareBody = "РўРµСЃС‚С‹ РґР»СЏ РїРѕРґРіРѕС‚РѕРІРєРё Рє Р¦Рў РЅР° СЃРјР°СЂС‚С„РѕРЅР°С… Рё РїР»Р°РЅС€РµС‚Р°С… РђРЅРґСЂРѕРёРґ. РЎРєР°С‡Р°Р№ С‚СѓС‚: http://goo.gl/38xv4s";
-//			sharingIntent.PutExtra(Intent.ExtraText, shareBody);
-//			StartActivity(Intent.CreateChooser(sharingIntent, "РџРѕРґРµР»РёС‚СЊСЃСЏ"));
-//		}
+		private OnClickListener MarketButtonClick()
+		{
+			return new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					goToURL ("https://play.google.com/store/apps/details?id=com.flaxtreme.CT");
+					//GoToURL ("https://play.google.com/store/apps/details?id=com.flaxtreme.pahonia");
+					
+				}
+			};	
+		}
+
+		private OnClickListener VkButtonClick()
+		{
+			return new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					goToURL ("http://vk.com/topic-50105858_29108685");	
+					
+				}
+			};
+		}
+
+		private OnClickListener AlmaButtonClick()
+		{
+			return new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					goToURL ("http://goo.gl/Ro8frA");	
+					
+				}
+			};
+		}
+
+		private OnClickListener AnketaButtonClick()
+		{
+			return new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					goToURL ("http://goo.gl/qvigG2");
+					
+				}
+			};
+			
+		}
+
+		private OnClickListener ShareButtonClick()
+		{
+			return new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+					sharingIntent.setType ("text/plain");
+					String shareBody = "Тесты для подготовки к ЦТ на смартфонах и планшетах Андроид. Скачай тут: http://goo.gl/38xv4s";
+					sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+					startActivity(Intent.createChooser(sharingIntent, "Поделиться"));
+				}
+			};
+		}
 
 		private void goToURL(String url)
 		{
@@ -116,5 +139,3 @@ import android.widget.TextView;
 			} 
 		}
 	}
-
-

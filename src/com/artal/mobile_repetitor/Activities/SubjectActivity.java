@@ -1,20 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using MR.Core.TestEntities;
-using MR.Android.Data;
-
-namespace com.flaxtreme.CT
-{
-	[Activity (Label = "Subject")]			
-	public class SubjectActivity : Activity
+package com.artal.mobile_repetitor.activities;
+			
+/*	public class SubjectActivity extends Activity
 	{
 		protected SubjectsEnumeration subjectType;
 		protected string subjectName;
@@ -63,5 +49,5 @@ namespace com.flaxtreme.CT
 			FindViewById<TextView> (Resource.Id.ProcentTextView).Text = "Процент правильных ответов: " + percent;
 		}
 	}
-}
 
+*/
