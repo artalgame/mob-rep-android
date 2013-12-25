@@ -1,6 +1,7 @@
 package com.artal.mobile_repetitor.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import com.artal.mobile_repetitor.R;
@@ -27,7 +28,7 @@ import android.widget.TextView;
 			mathButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					startActivity(GetSubjectIntent(SubjectsEnumeration.Math));
+					v.getContext().startActivity(GetSubjectIntent(v.getContext(), SubjectsEnumeration.Math));
 				}
 			});
 
@@ -48,12 +49,11 @@ import android.widget.TextView;
 			((TextView) findViewById(R.id.anketaTextView)).setOnClickListener(AnketaButtonClick());
 		}
 
-		private Intent GetSubjectIntent(SubjectsEnumeration subjectType)
+		private Intent GetSubjectIntent(Context context,SubjectsEnumeration subjectType)
 		{
-		//  Intent intent = new Intent (this, typeof(SubjectActivity));
-		//	intent.PutExtra ("SubjectType", subjectType.toString());
-	   //   return intent;
-			return null;
+		  Intent intent = new Intent (context, SubjectActivity.class);
+	      intent.putExtra ("SubjectType", subjectType.toString());
+	      return intent;
 		}
 
 		public void onBackPressed ()

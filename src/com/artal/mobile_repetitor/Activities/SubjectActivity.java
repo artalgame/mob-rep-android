@@ -1,53 +1,68 @@
 package com.artal.mobile_repetitor.activities;
+
+import com.artal.mobile_repetitor.R;
+import com.artal.mobile_repetitor.testEntities.SubjectsEnumeration;
+import com.artalgame.mobile_repetitor.data.SubjectHelper;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 			
-/*	public class SubjectActivity extends Activity
+	public class SubjectActivity extends Activity
 	{
 		protected SubjectsEnumeration subjectType;
-		protected string subjectName;
+		protected String subjectName;
 
-		protected override void OnCreate (Bundle bundle)
+		protected void OnCreate (Bundle bundle)
 		{
-			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.SubjectActivity);
+			super.onCreate (bundle);
+			setContentView (R.layout.subject_activity);
 
-			Enum.TryParse<SubjectsEnumeration> (Intent.GetStringExtra ("TestType"), out subjectType);
-
-			subjectName = SubjectHelper.GetSubjectName(subjectType, this);
+			subjectType = Enum.valueOf(SubjectsEnumeration.class, getIntent().getStringExtra("TestType"));
+			
+			subjectName = SubjectHelper.getSubjectName(subjectType, this);
 			SetSubjectNameTextView ();
 			LoadStatistics ();
-			(FindViewById<Button> (Resource.Id.TraningButton)).Click += TrainingButtonClick;
-
-
+			((Button) findViewById (R.id.TraningButton)).setOnClickListener( TrainingButtonClick());
 		}
 
-		private void TrainingButtonClick(Object sender, EventArgs args)
+		private OnClickListener TrainingButtonClick()
 		{
-			var intent = new Intent (this, typeof(ChooseTrainingActivity));
-			intent.PutExtra ("SubjectType", subjectType.ToString());
-			StartActivity (intent);
+			return new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					
+					Intent intent = new Intent (v.getContext(), ChooseTrainingActivity.class);
+					intent.putExtra ("SubjectType", subjectType.toString());
+					startActivity (intent);
+				}
+			};			
 		}
 
-		private void TestButtonClick(Object sender, EventArgs args)
+		private void TestButtonClick()
 		{
 		}
 
 		protected void SetSubjectNameTextView()
 		{
-			(FindViewById<TextView> (Resource.Id.SubjectNameTextView)).SetText(subjectName, TextView.BufferType.Normal);
+			((TextView)findViewById (R.id.SubjectNameTextView)).setText(subjectName, TextView.BufferType.NORMAL);
 		}
 
 		protected void LoadStatistics()
 		{
-			var retriever = new SubjectRetriever (subjectType, this);
-			var statistic = retriever.GetStatistic ();
-			int overall = statistic.X;
-			int right = statistic.Y;
-
-			FindViewById<TextView> (Resource.Id.OverallTextView).Text = "Всего попыток: " + overall;
-			FindViewById<TextView> (Resource.Id.RightTextView).Text = "Успешных попыток: " + right;
-			int percent = overall == 0 ? 0 : (int)(((float)right / (float)overall) * 100);
-			FindViewById<TextView> (Resource.Id.ProcentTextView).Text = "Процент правильных ответов: " + percent;
+//			SubjectRetriever retriever = new SubjectRetriever (subjectType, this);
+//			var statistic = retriever.GetStatistic ();
+//			int overall = statistic.X;
+//			int right = statistic.Y;
+//
+//			FindViewById<TextView> (Resource.Id.OverallTextView).Text = "Всего попыток: " + overall;
+//			FindViewById<TextView> (Resource.Id.RightTextView).Text = "Успешных попыток: " + right;
+//			int percent = overall == 0 ? 0 : (int)(((float)right / (float)overall) * 100);
+//			FindViewById<TextView> (Resource.Id.ProcentTextView).Text = "Процент правильных ответов: " + percent;
 		}
 	}
-
-*/
