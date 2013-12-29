@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import com.flurry.android.FlurryAgent;
 
 	public class MainActivity extends Activity
 	{
@@ -49,6 +50,18 @@ import android.widget.TextView;
 			((TextView) findViewById(R.id.anketaTextView)).setOnClickListener(AnketaButtonClick());
 		}
 
+		@Override
+		protected void onStart(){
+			super.onStart();
+			FlurryAgent.onStartSession(this, "95YK9RHV94XGK4TS6996");
+		}
+		
+		@Override
+		protected void onStop(){
+			super.onStop();		
+			FlurryAgent.onEndSession(this);
+		}
+
 		private Intent GetSubjectIntent(Context context,SubjectsEnumeration subjectType)
 		{
 		  Intent intent = new Intent (context, SubjectActivity.class);
@@ -71,6 +84,7 @@ import android.widget.TextView;
 				
 				@Override
 				public void onClick(View v) {
+					FlurryAgent.logEvent("MarketButtonClickMainActivity");
 					goToURL ("https://play.google.com/store/apps/details?id=com.flaxtreme.CT");
 					//GoToURL ("https://play.google.com/store/apps/details?id=com.flaxtreme.pahonia");
 					
@@ -84,7 +98,8 @@ import android.widget.TextView;
 				
 				@Override
 				public void onClick(View v) {
-					goToURL ("http://vk.com/topic-50105858_29108685");	
+					goToURL ("http://vk.com/topic-50105858_29108685");
+					FlurryAgent.logEvent("VKButtonClickMainActivity");
 					
 				}
 			};
